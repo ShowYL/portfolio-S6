@@ -64,99 +64,101 @@ export default function ExperiencesPage() {
         </p>
       </header>
 
-            <div className="space-y-12">
+                  <div className="space-y-12">
 
-              {experiences.map((exp, index) => (
+                    {experiences.map((exp, index) => (
 
-                <div key={index} className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-slate-200 dark:before:bg-slate-800">
+                      <div key={index} className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-slate-300 dark:before:bg-slate-700">
 
-                  <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_0_4px_rgba(37,99,235,0.1)]"></div>
+                        <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_0_4px_rgba(37,99,235,0.2)]"></div>
 
-                  
+                        
 
-                  <div className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-2xl border border-white/20 dark:border-white/10 p-6 md:p-8 shadow-sm hover:shadow-md transition-all">
+                        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 p-6 md:p-8 shadow-md hover:shadow-lg transition-all">
 
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
 
-                      <div>
+                            <div>
 
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{exp.title}</h2>
+                              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{exp.title}</h2>
 
-                        <p className="text-lg font-medium text-blue-600">{exp.company}</p>
+                              <p className="text-lg font-medium text-blue-600 dark:text-blue-400">{exp.company}</p>
 
-                      </div>
+                            </div>
 
-                      <div className="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400 md:items-end">
+                            <div className="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400 md:items-end">
 
-                        <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-1.5">
 
-                          <Calendar className="w-4 h-4" />
+                                <Calendar className="w-4 h-4" />
 
-                          <span>{exp.period}</span>
+                                <span>{exp.period}</span>
+
+                              </div>
+
+                              <div className="flex items-center gap-1.5">
+
+                                <MapPin className="w-4 h-4" />
+
+                                <span>{exp.location}</span>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+            
+
+                          <p className="text-slate-700 dark:text-slate-200 mb-6 font-medium leading-relaxed">
+
+                            {exp.description}
+
+                          </p>
+
+            
+
+                          <ul className="space-y-3 mb-8 pl-1">
+
+                            {exp.tasks.map((task, idx) => (
+
+                              <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300 text-sm md:text-base">
+
+                                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 shrink-0"></span>
+
+                                <span>{task}</span>
+
+                              </li>
+
+                            ))}
+
+                          </ul>
+
+            
+
+                          <div className="flex flex-wrap gap-2">
+
+                            {exp.skills.map((skill, idx) => (
+
+                              <span key={idx} className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700">
+
+                                {skill}
+
+                              </span>
+
+                            ))}
+
+                          </div>
 
                         </div>
 
-                        <div className="flex items-center gap-1.5">
-
-                          <MapPin className="w-4 h-4" />
-
-                          <span>{exp.location}</span>
-
-                        </div>
-
                       </div>
 
-                    </div>
-
-      
-
-                    <p className="text-slate-700 dark:text-slate-300 mb-6 font-medium">
-
-                      {exp.description}
-
-                    </p>
-
-      
-
-                    <ul className="space-y-3 mb-8 pl-1">
-
-                      {exp.tasks.map((task, idx) => (
-
-                        <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-sm md:text-base">
-
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-blue-600 shrink-0"></span>
-
-                          <span>{task}</span>
-
-                        </li>
-
-                      ))}
-
-                    </ul>
-
-      
-
-                    <div className="flex flex-wrap gap-2">
-
-                      {exp.skills.map((skill, idx) => (
-
-                        <span key={idx} className="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium border border-white/20">
-
-                          {skill}
-
-                        </span>
-
-                      ))}
-
-                    </div>
+                    ))}
 
                   </div>
 
-                </div>
-
-              ))}
-
-            </div>
+            
 
       
     </div>

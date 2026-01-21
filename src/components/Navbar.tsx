@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   User,
   Briefcase,
@@ -11,8 +11,11 @@ import {
   FileText,
   Menu,
   X,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { name: "Accueil", href: "/", icon: User },
@@ -25,10 +28,16 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-lg shadow-black/5 dark:shadow-none transition-all duration-300 supports-backdrop-filter:bg-white/60">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-lg shadow-black/5 dark:shadow-none transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
         <div className="mx-auto px-6">
           <div className="flex justify-between h-14 items-center">
             <div className="shrink-0 flex items-center">
@@ -42,7 +51,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -67,10 +76,24 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+              <button
+                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {mounted && (resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+              </button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden">
+            {/* Mobile Menu Button & Theme Toggle */}
+            <div className="flex items-center gap-4 md:hidden">
+              <button
+                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {mounted && (resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+              </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-colors p-2"
@@ -125,4 +148,3 @@ export default function Navbar() {
     </>
   );
 }
-

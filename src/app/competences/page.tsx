@@ -131,27 +131,26 @@ export default function CompetencesPage() {
       </header>
 
       <div className="space-y-12">
-                {competences.map((comp, index) => (
-                  <section key={index} className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-2xl border border-white/20 dark:border-white/10 overflow-hidden shadow-sm transition-all hover:shadow-md">
-                    <div className="p-6 md:p-8">
-                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                        <div className="flex-1">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-                            <div className="p-2 bg-blue-100/50 dark:bg-blue-900/30 rounded-lg w-fit">
-                              <comp.icon className="text-blue-600 w-6 h-6" />
-                            </div>
-                            <h2 className="text-2xl font-bold">{comp.title}</h2>
-                            <span className="px-3 py-1 bg-blue-50/50 dark:bg-blue-900/20 text-xs font-medium rounded-full text-blue-700 dark:text-blue-300 w-fit">
-                              {comp.shortDescription}
-                            </span>
-                          </div>
-                          <p className="text-slate-600 dark:text-slate-400 mb-6 italic pl-1">
-                            {comp.description}
-                          </p>
-                          
-                          <div className="bg-white/50 dark:bg-slate-800/30 p-5 md:p-6 rounded-xl mb-6 border border-white/20 dark:border-white/5">
-        
-                    <div className="flex items-center gap-2 mb-4 text-blue-700 dark:text-blue-400 font-semibold">
+                        {competences.map((comp, index) => (
+                          <section key={index} className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md transition-all hover:shadow-lg">
+                            <div className="p-6 md:p-8">
+                              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                                <div className="flex-1">
+                                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+                                    <div className="p-2 bg-blue-100 dark:bg-blue-900/40 rounded-lg w-fit">
+                                      <comp.icon className="text-blue-600 dark:text-blue-400 w-6 h-6" />
+                                    </div>
+                                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{comp.title}</h2>
+                                    <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-xs font-semibold rounded-full text-blue-700 dark:text-blue-300 w-fit border border-blue-100 dark:border-blue-800">
+                                      {comp.shortDescription}
+                                    </span>
+                                  </div>
+                                  <p className="text-slate-600 dark:text-slate-400 mb-6 italic pl-1 leading-relaxed">
+                                    {comp.description}
+                                  </p>
+                                  
+                                  <div className="bg-white/50 dark:bg-slate-800/40 p-5 md:p-6 rounded-xl mb-6 border border-slate-100 dark:border-slate-700/50 shadow-inner">
+                                    <div className="flex items-center gap-2 mb-4 text-blue-700 dark:text-blue-400 font-semibold">
                       <TrendingUp className="w-5 h-5" />
                       <h3>Évolution par niveau (BUT 1 à 3)</h3>
                     </div>
