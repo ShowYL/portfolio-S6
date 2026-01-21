@@ -13,6 +13,7 @@ import {
   X,
   Sun,
   Moon,
+  Mail,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -22,6 +23,7 @@ const navLinks = [
   { name: "Expériences", href: "/experiences", icon: Briefcase },
   { name: "Compétences", href: "/competences", icon: GraduationCap },
   { name: "Réalisations", href: "/realisations", icon: FolderCode },
+  { name: "Contact", href: "/contact", icon: Mail },
   { name: "CV", href: "/cv", icon: FileText },
 ];
 
@@ -77,22 +79,36 @@ export default function Navbar() {
                 );
               })}
               <button
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                onClick={() =>
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }
                 className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 aria-label="Toggle theme"
               >
-                {mounted && (resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+                {mounted &&
+                  (resolvedTheme === "dark" ? (
+                    <Sun className="w-4 h-4" />
+                  ) : (
+                    <Moon className="w-4 h-4" />
+                  ))}
               </button>
             </div>
 
             {/* Mobile Menu Button & Theme Toggle */}
             <div className="flex items-center gap-4 md:hidden">
               <button
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                onClick={() =>
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }
                 className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 aria-label="Toggle theme"
               >
-                {mounted && (resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+                {mounted &&
+                  (resolvedTheme === "dark" ? (
+                    <Sun className="w-4 h-4" />
+                  ) : (
+                    <Moon className="w-4 h-4" />
+                  ))}
               </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -148,3 +164,4 @@ export default function Navbar() {
     </>
   );
 }
+
